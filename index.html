@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Học tiếng Anh</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:linear-gradient(135deg,#ffd1e8 0%,#d9c8ff 45%,#bfe6ff 100%);--glass:rgba(255,255,255,.6);--btn:rgba(255,255,255,.5);--line:rgba(255,255,255,.75);--ink:#23264f;--muted:#586084;--accent:#c43d86;--on:#fff;--ok:#12805a;--bad:#c0392b;--sh:0 8px 28px rgba(90,60,150,.16);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:linear-gradient(150deg,#1b1840,#4a2d7a 55%,#b4528f);--glass:rgba(24,20,52,.62);--btn:rgba(255,255,255,.12);--line:rgba(255,255,255,.2);--ink:#f2eefc;--muted:#bcb4dc;--accent:#ff9ccf;--on:#2a1030;--ok:#6ee7b7;--bad:#ff9a9a;--sh:0 8px 28px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:linear-gradient(150deg,#1b1840,#4a2d7a 55%,#b4528f);--glass:rgba(24,20,52,.62);--btn:rgba(255,255,255,.12);--line:rgba(255,255,255,.2);--ink:#f2eefc;--muted:#bcb4dc;--accent:#ff9ccf;--on:#2a1030;--ok:#6ee7b7;--bad:#ff9a9a;--sh:0 8px 28px rgba(0,0,0,.35)}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--bg) center/cover;color:var(--ink);font:600 16px/1.5 Quicksand,system-ui,-apple-system,"Segoe UI",sans-serif}
+.shell{display:flex;height:100%}
+aside{width:190px;margin:12px;padding:14px 10px;display:flex;flex-direction:column;gap:7px;overflow-y:auto;flex:none}
+main{flex:1;overflow:auto;padding:12px 12px 28px 0;min-width:0}
+.view{max-width:640px;margin:0 auto}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--sh)}
+.pad{padding:18px;margin-bottom:14px}
+.c{text-align:center}
+.nb,.btn{background:var(--btn);border:1px solid var(--line);color:var(--ink);font:inherit;border-radius:14px;box-shadow:0 4px 14px rgba(90,60,150,.12);cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .12s}
+.nb:hover,.btn:hover{transform:translateY(-2px)}
+.nb{display:flex;align-items:center;gap:10px;padding:10px 12px;text-align:left;width:100%}
+.nb[aria-current="page"],.btn.pri{background:var(--accent);color:var(--on);border-color:transparent}
+.btn{padding:11px 16px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.row .btn{flex:1}
+:is(button,input,summary):focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.ava{width:80px;height:80px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden;border:3px solid var(--line);background:var(--btn)}
+.ava img{width:100%;height:100%;object-fit:cover}
+.nm{text-align:center;font-weight:700}
+.bub{font-size:.8rem;text-align:center;color:var(--muted);margin-bottom:6px}
+h2{margin:4px 0 12px;font-size:1.4rem}
+.big{font-size:2.3rem;font-weight:700;word-break:break-word}
+.ipa{color:var(--accent);font-size:1.15rem}
+.pos{color:var(--muted)}
+.small{color:var(--muted);font-size:.9rem}
+.bar{height:8px;border-radius:8px;background:var(--btn);overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;background:var(--accent)}
+.card{width:100%;min-height:230px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;color:inherit;font:inherit;cursor:pointer}
+.opt{display:block;width:100%;text-align:left;margin-top:9px}
+.opt.right{background:rgba(40,190,130,.35);border-color:var(--ok)}
+.opt.wrong{background:rgba(230,70,70,.3);border-color:var(--bad)}
+input{width:100%;font:inherit;padding:12px;margin-top:8px;border-radius:12px;border:1px solid var(--line);background:var(--btn);color:var(--ink)}
+input::placeholder{color:var(--muted)}
+.kw{border:0;border-bottom:2px dotted var(--accent);background:none;color:inherit;font:inherit;padding:0;cursor:pointer}
+details{margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;padding:12px 16px}
+details>div{padding:0 16px 14px}
+.sw{width:44px;height:44px;border-radius:12px;border:2px solid var(--line);cursor:pointer;font-size:1.4rem;padding:0;background:var(--btn)}
+.del{border:0;background:none;color:var(--bad);font:inherit;cursor:pointer;float:right}
+.err{color:var(--bad);min-height:1.3em}
+@media (max-width:640px){aside{width:62px;padding:10px 6px;margin:8px}.nb{justify-content:center;padding:10px 4px}.t,.nm,.bub{display:none}.ava{width:42px;height:42px;font-size:22px}main{padding:8px 8px 28px 0}.big{font-size:1.9rem}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="glass" id="side"></aside>
+<main><div class="view" id="v"></div></main>
+</div>
+<script>
+var KEY="hte-v1",$=function(i){return document.getElementById(i)};
+var D=[["hello","həˈləʊ","thán từ","xin chào;alo","Hello, how are you today?"],["friend","frend","danh từ","bạn bè;người quen","She is my best friend."],["water","ˈwɔːtə","danh từ","nước;nước uống","Can I have some water, please?"],["improve","ɪmˈpruːv","động từ","cải thiện;tiến bộ","I want to improve my English."],["journey","ˈdʒɜːni","danh từ","hành trình;chuyến đi","The journey took three days."],["borrow","ˈbɒrəʊ","động từ","mượn;vay","Can I borrow your pen?"],["weather","ˈweðə","danh từ","thời tiết","The weather is nice today."],["remember","rɪˈmembə","động từ","nhớ;ghi nhớ;nhớ lại","I cannot remember his name."],["tired","ˈtaɪəd","tính từ","mệt;chán","I feel tired after work."],["market","ˈmɑːkɪt","danh từ","chợ;thị trường","We buy fruit at the market."],["beautiful","ˈbjuːtɪfl","tính từ","đẹp;tuyệt vời","What a beautiful view!"],["choose","tʃuːz","động từ","chọn;lựa chọn","Please choose one answer."],["early","ˈɜːli","trạng từ","sớm;đầu","I wake up early every day."],["library","ˈlaɪbrəri","danh từ","thư viện","I study at the library."]];
+var S={words:D.map(function(a){return{w:a[0],i:a[1],p:a[2],m:a[3].split(";"),e:a[4]}}),known:{},gram:[],name:"Bạn",avatar:"🌸",bg:""};
+try{var o=JSON.parse(localStorage.getItem(KEY));if(o&&o.words&&o.words.length)for(var k in o)S[k]=o[k]}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function shuffle(a){return a.slice().sort(function(){return Math.random()-.5})}
+function sample(a,n){return shuffle(a).slice(0,n)}
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+function list(m){return m.slice(0,3).map(function(x,i){return(i+1)+". "+esc(x)}).join("<br>")}
+function head(w){return'<div class="big">'+esc(w.w)+'</div><div class="ipa">/'+esc(w.i||"")+'/</div><div class="pos">'+esc(w.p||"")+'</div>'}
+var TTS="speechSynthesis" in window&&"SpeechSynthesisUtterance" in window,voice=null;
+function pickV(){try{var v=speechSynthesis.getVoices();voice=v.filter(function(x){return/^en[-_]US/i.test(x.lang)})[0]||v.filter(function(x){return/^en/i.test(x.lang)})[0]||null}catch(e){}}
+if(TTS){pickV();try{speechSynthesis.onvoiceschanged=pickV}catch(e){}}
+function say(t,r){if(!TTS)return;try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="en-US";if(voice)u.voice=voice;u.rate=r||.95;speechSynthesis.speak(u)}catch(e){}}
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null;
+function hear(cb,eb){try{rec=new SR();rec.lang="en-US";rec.interimResults=false;rec.onresult=function(e){cb(e.results[0][0].transcript)};rec.onerror=function(e){eb(e.error)};rec.start()}catch(e){eb("x")}}
+function micErr(e){return e==="not-allowed"?"Hãy cho phép dùng micro.":"Chưa nghe rõ, thử lại nhé."}
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/).filter(Boolean)}
+function score(t,h){var a=norm(t),b=norm(h);return a.length?Math.round(a.filter(function(x){return b.indexOf(x)>-1}).length/a.length*100):0}
+var NOSPK='<div class="glass pad c">Thiết bị này chưa hỗ trợ giọng đọc.</div>',NOMIC='<p class="small">Trình duyệt này chưa hỗ trợ nhận giọng nói. Hãy dùng Chrome, Edge hoặc Safari mới.</p>';
+var TABS=[["card","🃏","Flashcard"],["listen","🎧","Listening"],["read","📖","Reading"],["speak","🎤","Speaking"],["write","✍️","Writing"],["test","📝","Kiểm tra"],["gram","📚","Ngữ pháp"],["dict","🔎","Từ điển"],["set","🎨","Tùy chỉnh"]];
+var tab="card",HI=["Cố lên nào!","Mỗi ngày một ít nhé!","Hôm nay học gì đây?"],hi=rnd(HI);
+function go(t){tab=t;if(t==="test")T=null;R()}
+function R(){
+  var av=S.avatar.indexOf("data:")===0?'<img src="'+S.avatar+'" alt="">':S.avatar;
+  $("side").innerHTML='<div class="ava">'+av+'</div><div class="nm">'+esc(S.name)+'</div><div class="bub">'+hi+'</div>'+TABS.map(function(t){return'<button class="nb" '+(t[0]===tab?'aria-current="page" ':"")+'onclick="go(\''+t[0]+'\')"><span>'+t[1]+'</span><span class="t">'+t[2]+'</span></button>'}).join("");
+  var f={card:vCard,listen:vListen,read:vRead,speak:vSpeak,write:vWrite,test:vTest,gram:vGram,dict:vDict,set:vSet}[tab];
+  $("v").innerHTML=f();if(tab==="dict")dRes();
+}
+/* Flashcard */
+var fq=[],ff=false;
+function fb(){fq=S.words.filter(function(x){return!S.known[x.w]})}
+function vCard(){var n=S.words.length,k=n-fq.length,h='<h2>Flashcard</h2><div class="small">Đã nhớ '+k+'/'+n+'</div><div class="bar"><i style="width:'+(n?k/n*100:0)+'%"></i></div>';
+  if(!fq.length)return h+'<div class="glass pad c"><div class="big">Xong rồi! 🎉</div><p class="small">Bạn đã nhớ hết các từ hiện có.</p><button class="btn pri" onclick="S.known={};save();fb();R()">Học lại từ đầu</button></div>';
+  var c=fq[0];
+  return h+'<button class="glass card" onclick="ff=!ff;R()" aria-label="Lật thẻ">'+head(c)+(ff?'<div style="margin-top:10px">'+list(c.m)+'</div>'+(c.e?'<div class="small" style="margin-top:8px">“'+esc(c.e)+'”</div>':""):'<div class="small" style="margin-top:12px">Chạm để xem nghĩa</div>')+'</button><div class="row"><button class="btn" onclick="say(fq[0].w)">🔊 Nghe</button><button class="btn" onclick="fq.push(fq.shift());ff=false;R()">Chưa nhớ</button><button class="btn pri" onclick="S.known[fq[0].w]=1;fq.shift();ff=false;save();R()">Đã nhớ</button></div>'}
+/* Listening */
+var Lq=null;
+function newL(){Lq=S.words.length<4?null:(function(){var w=rnd(S.words);return{w:w,o:shuffle(sample(S.words.filter(function(x){return x!==w}),3).concat(w)),p:null}})()}
+function vListen(){if(!TTS)return NOSPK;if(!Lq)newL();if(!Lq)return'<div class="glass pad">Cần ít nhất 4 từ để luyện nghe.</div>';
+  var h='<h2>Listening</h2><div class="glass pad c"><div class="small">Nghe và chọn từ bạn nghe được</div><div class="row"><button class="btn pri" onclick="say(Lq.w.w)">▶ Nghe</button><button class="btn" onclick="say(Lq.w.w,.55)">🐢 Nghe chậm</button></div></div>';
+  Lq.o.forEach(function(x,i){var c="btn opt";if(Lq.p!==null){if(x===Lq.w)c+=" right";else if(i===Lq.p)c+=" wrong"}h+='<button class="'+c+'" onclick="if(Lq.p===null){Lq.p='+i+';R()}">'+esc(x.w)+'</button>'});
+  if(Lq.p!==null)h+='<div class="glass pad c" style="margin-top:12px">'+head(Lq.w)+'<div>'+esc(Lq.w.m[0])+'</div><div class="row"><button class="btn pri" onclick="newL();R()">Câu tiếp</button></div></div>';
+  return h}
+/* Reading */
+var P=[{t:"Mai’s morning",x:"Mai wakes up early every day. She drinks water, walks to the market with a friend, and buys fresh fruit. After that she goes to the library to improve her English.",q:[["What does Mai drink in the morning?","Water","Coffee","Milk"],["Where does Mai go after the market?","The library","School","Home"]]},{t:"A long journey",x:"Tom’s journey to Da Lat took two days. The weather was cold, so he felt tired. He chose a small hotel and slept early.",q:[["How long was the journey?","Two days","One day","Three days"],["What was the weather like?","Cold","Hot","Rainy"]]}];
+var Rd=null,Rh=null;
+function rOpen(i){Rd={i:i,qs:P[i].q.map(function(q){return{q:q[0],a:q[1],o:shuffle(q.slice(1)),p:null}})};Rh=null;R()}
+function rw(w){Rh=S.words.filter(function(x){return x.w===w})[0];say(w);R()}
+function vRead(){var h='<h2>Reading</h2><div class="row" style="margin:0 0 12px">'+P.map(function(p,i){return'<button class="btn'+(Rd&&Rd.i===i?" pri":"")+'" onclick="rOpen('+i+')">'+esc(p.t)+'</button>'}).join("")+'</div>';
+  if(!Rd)return h+'<div class="glass pad c">Chọn một bài đọc để bắt đầu.</div>';
+  var p=P[Rd.i],txt=esc(p.x).replace(/[A-Za-z]+/g,function(m){var f=S.words.filter(function(x){return x.w===m.toLowerCase()})[0];return f?'<button class="kw" onclick="rw(\''+f.w+'\')">'+m+'</button>':m});
+  h+='<div class="glass pad"><div style="font-size:1.1rem;line-height:1.8">'+txt+'</div>'+(Rh?'<p class="small">'+esc(Rh.w)+' /'+esc(Rh.i)+'/ ('+esc(Rh.p)+'): '+esc(Rh.m.slice(0,3).join("; "))+'</p>':'<p class="small">Chạm vào từ gạch chân để nghe và xem nghĩa.</p>')+'</div>';
+  Rd.qs.forEach(function(q,qi){h+='<div class="glass pad"><b>'+esc(q.q)+'</b>';q.o.forEach(function(x,oi){var c="btn opt";if(q.p!==null){if(x===q.a)c+=" right";else if(oi===q.p)c+=" wrong"}h+='<button class="'+c+'" onclick="if(Rd.qs['+qi+'].p===null){Rd.qs['+qi+'].p='+oi+';R()}">'+esc(x)+'</button>'});h+='</div>'});
+  var d=Rd.qs.filter(function(q){return q.p!==null});
+  if(d.length===Rd.qs.length)h+='<div class="glass pad c">Đúng '+Rd.qs.filter(function(q){return q.o[q.p]===q.a}).length+'/'+Rd.qs.length+' câu 🎉</div>';
+  return h}
+/* Speaking */
+var Sq=null;
+function newS(){var c=S.words.filter(function(x){return x.e});Sq={w:rnd(c.length?c:S.words),h:null,s:null,on:0,err:""}}
+function sGo(){Sq.on=1;Sq.h=null;Sq.err="";R();hear(function(t){Sq.on=0;Sq.h=t;Sq.s=score(Sq.w.e||Sq.w.w,t);R()},function(e){Sq.on=0;Sq.err=micErr(e);R()})}
+function vSpeak(){if(!Sq)newS();var w=Sq.w,t=w.e||w.w,h='<h2>Speaking</h2><div class="glass pad c">'+head(w)+'<p style="font-size:1.1rem">“'+esc(t)+'”</p><div class="row">'+(TTS?'<button class="btn" onclick="say(Sq.w.e||Sq.w.w)">🔊 Nghe mẫu</button>':"")+(SR?'<button class="btn pri" onclick="sGo()">'+(Sq.on?"Đang nghe…":"🎤 Bấm và đọc")+'</button>':"")+'</div>'+(SR?"":NOMIC)+'</div>';
+  if(Sq.err)h+='<div class="glass pad err">'+esc(Sq.err)+'</div>';
+  if(Sq.h!==null)h+='<div class="glass pad c"><div class="small">Bạn đọc:</div><div>“'+esc(Sq.h)+'”</div><div class="big">'+Sq.s+'%</div><div>'+(Sq.s>=80?"Rất tốt! 🌟":Sq.s>=50?"Khá ổn, thử lại để rõ hơn nhé.":"Nghe mẫu rồi đọc lại nhé.")+'</div></div>';
+  return h+'<div class="row"><button class="btn" onclick="newS();R()">Câu khác</button></div>'}
+/* Writing */
+var Wq=null;
+function newW(){Wq={w:rnd(S.words),r:null,h:0,v:""}}
+function wKey(e){if(e.key==="Enter")wChk()}
+function wChk(){var v=$("wi").value.trim();Wq.v=v;Wq.r=v.toLowerCase()===Wq.w.w.toLowerCase()?1:0;R()}
+function vWrite(){if(!Wq)newW();var w=Wq.w,h='<h2>Writing</h2><div class="glass pad c"><div class="small">Viết từ tiếng Anh có nghĩa:</div><div class="big" style="font-size:1.7rem">'+esc(w.m[0])+'</div><div class="pos">'+esc(w.p)+'</div></div><div class="glass pad">';
+  if(Wq.r===null){h+='<input id="wi" value="'+esc(Wq.v)+'" placeholder="Gõ từ tiếng Anh" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="wKey(event)">'+(Wq.h?'<p class="small">Gợi ý: '+esc(w.w.charAt(0))+" _ ".repeat(w.w.length-1).trim()+' ('+w.w.length+' chữ cái)</p>':"")+'<div class="row"><button class="btn" onclick="Wq.v=$(\'wi\').value;Wq.h=1;R()">💡 Gợi ý</button><button class="btn pri" onclick="wChk()">Kiểm tra</button></div>'}
+  else h+='<div class="c"><div class="big">'+(Wq.r?"Chính xác! ✨":"Chưa đúng")+'</div>'+(Wq.r?"":'<div class="small">Bạn viết: '+esc(Wq.v||"(trống)")+'</div>')+head(w)+'<div class="row">'+(TTS?'<button class="btn" onclick="say(Wq.w.w)">🔊 Nghe</button>':"")+'<button class="btn pri" onclick="newW();R()">Từ tiếp</button></div></div>';
+  return h+'</div>'}
+/* Test */
+var T=null,TN={mean:"Nghĩa",word:"Từ",listen:"Listening",read:"Reading",write:"Writing",speak:"Speaking"};
+function genQ(t){var w=rnd(S.words);
+  if(t==="read"){var c=S.words.filter(function(x){return x.e&&x.e.toLowerCase().indexOf(x.w.toLowerCase())>-1});if(c.length)w=rnd(c);else t="mean"}
+  if(S.words.length<4&&t!=="write"&&t!=="speak")t="write";
+  var q={t:t,w:w};if(["mean","word","listen","read"].indexOf(t)>-1)q.o=shuffle(sample(S.words.filter(function(x){return x!==w}),3).concat(w));return q}
+function tStart(){var ty=Object.keys(TN).filter(function(t){return(t!=="listen"||TTS)&&(t!=="speak"||SR)}),od=[];while(od.length<10)od=od.concat(shuffle(ty));T={i:0,qs:od.slice(0,10).map(genQ),sc:{},a:null,on:0,err:""};R()}
+function tRec(ok){var q=T.qs[T.i];T.sc[q.t]=T.sc[q.t]||[0,0];T.sc[q.t][1]++;if(ok)T.sc[q.t][0]++;T.a={ok:ok}}
+function tPick(i){if(T.a)return;var q=T.qs[T.i];tRec(q.o[i]===q.w);T.a.i=i;R()}
+function tWrite(){if(T.a)return;var v=$("tw").value.trim();tRec(v.toLowerCase()===T.qs[T.i].w.w.toLowerCase());T.a.v=v;R()}
+function tSpeak(){T.on=1;T.err="";R();hear(function(t){T.on=0;tRec(norm(t).indexOf(T.qs[T.i].w.w.toLowerCase())>-1);T.a.v=t;R()},function(e){T.on=0;T.err=micErr(e);R()})}
+function tNext(){T.i++;T.a=null;T.err="";R()}
+function vTest(){var h='<h2>Kiểm tra</h2>';
+  if(!T)return h+'<div class="glass pad c"><p>10 câu hỏi trộn các kỹ năng: nghĩa, từ, listening, reading, writing, speaking.</p><button class="btn pri" onclick="tStart()">Bắt đầu</button></div>';
+  if(T.i>=10){var tot=0,ok=0,rows="";for(var k in T.sc){tot+=T.sc[k][1];ok+=T.sc[k][0];rows+='<div>'+TN[k]+': '+T.sc[k][0]+'/'+T.sc[k][1]+'</div>'}return h+'<div class="glass pad c"><div class="big">'+ok+'/'+tot+'</div>'+rows+'<div class="row"><button class="btn pri" onclick="tStart()">Làm lại</button></div></div>'}
+  var q=T.qs[T.i],w=q.w;h+='<div class="small">Câu '+(T.i+1)+'/10 · '+TN[q.t]+'</div><div class="bar"><i style="width:'+T.i*10+'%"></i></div><div class="glass pad c">';
+  if(q.t==="mean")h+=head(w);
+  else if(q.t==="word")h+='<div class="small">Từ nào có nghĩa:</div><div class="big" style="font-size:1.7rem">'+esc(w.m[0])+'</div><div class="pos">'+esc(w.p)+'</div>';
+  else if(q.t==="listen")h+='<div class="small">Bạn nghe được từ nào?</div><div class="row"><button class="btn pri" onclick="say(T.qs[T.i].w.w)">▶ Nghe</button><button class="btn" onclick="say(T.qs[T.i].w.w,.55)">🐢 Chậm</button></div>';
+  else if(q.t==="read")h+='<div class="small">Điền từ còn thiếu:</div><p style="font-size:1.15rem">'+esc(w.e).replace(new RegExp(w.w,"i"),"_____")+'</p>';
+  else if(q.t==="write")h+='<div class="small">Viết từ tiếng Anh có nghĩa:</div><div class="big" style="font-size:1.7rem">'+esc(w.m[0])+'</div><div class="pos">'+esc(w.p)+'</div>';
+  else h+='<div class="small">Hãy đọc to từ này:</div>'+head(w);
+  h+='</div>';
+  if(q.o)q.o.forEach(function(x,i){var c="btn opt";if(T.a){if(x===w)c+=" right";else if(i===T.a.i)c+=" wrong"}h+='<button class="'+c+'" onclick="tPick('+i+')">'+esc(q.t==="mean"?x.m[0]:x.w)+'</button>'});
+  else if(q.t==="write"){h+=T.a?"":'<input id="tw" placeholder="Gõ từ tiếng Anh" autocomplete="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key===\'Enter\')tWrite()"><div class="row"><button class="btn pri" onclick="tWrite()">Kiểm tra</button></div>'}
+  else if(!T.a)h+=(T.on?'<div class="glass pad c">Đang nghe…</div>':'<div class="row"><button class="btn pri" onclick="tSpeak()">🎤 Bấm và đọc</button><button class="btn" onclick="tRec(false);R()">Bỏ qua</button></div>')+(T.err?'<p class="err">'+esc(T.err)+'</p>':"");
+  if(T.a)h+='<div class="glass pad c" style="margin-top:12px"><div class="big" style="font-size:1.6rem">'+(T.a.ok?"Đúng rồi! ✨":"Chưa đúng")+'</div>'+(T.a.ok?"":'<div>Đáp án: '+esc(w.w)+' /'+esc(w.i)+'/ — '+esc(w.m[0])+'</div>')+'<div class="row"><button class="btn pri" onclick="tNext()">'+(T.i>=9?"Xem kết quả":"Câu tiếp")+'</button></div></div>';
+  return h}
+/* Grammar */
+var G=[["Hiện tại đơn (Present Simple)","S + V(s/es)","Thói quen, sự thật hiển nhiên","She drinks tea every morning."],["Hiện tại tiếp diễn (Present Continuous)","S + am/is/are + V-ing","Hành động đang xảy ra","I am studying now."],["Hiện tại hoàn thành (Present Perfect)","S + have/has + V3","Kết quả kéo đến hiện tại","I have lived here for five years."],["Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous)","S + have/has been + V-ing","Hành động kéo dài đến nay","He has been working since 8 a.m."],["Quá khứ đơn (Past Simple)","S + V2","Hành động đã xong trong quá khứ","We visited Hue last year."],["Quá khứ tiếp diễn (Past Continuous)","S + was/were + V-ing","Hành động đang xảy ra tại một thời điểm trong quá khứ","I was reading at 9 p.m."],["Quá khứ hoàn thành (Past Perfect)","S + had + V3","Xảy ra trước một hành động khác trong quá khứ","She had left before I arrived."],["Quá khứ hoàn thành tiếp diễn (Past Perfect Continuous)","S + had been + V-ing","Kéo dài đến một mốc trong quá khứ","They had been waiting for an hour."],["Tương lai đơn (Future Simple)","S + will + V","Quyết định tức thì, dự đoán","I will call you tomorrow."],["Tương lai tiếp diễn (Future Continuous)","S + will be + V-ing","Đang xảy ra tại một thời điểm trong tương lai","This time tomorrow I will be flying."],["Tương lai hoàn thành (Future Perfect)","S + will have + V3","Hoàn tất trước một mốc tương lai","I will have finished by Friday."],["Tương lai hoàn thành tiếp diễn (Future Perfect Continuous)","S + will have been + V-ing","Kéo dài đến một mốc tương lai","By June, I will have been studying for three years."]];
+function gItem(g,d){return'<details class="glass"><summary>'+esc(g[0])+(d===undefined?"":'<button class="del" onclick="event.preventDefault();S.gram.splice('+d+',1);save();R()">Xóa</button>')+'</summary><div><b>Công thức:</b> '+esc(g[1])+'<br><b>Cách dùng:</b> '+esc(g[2])+'<br><b>Ví dụ:</b> '+esc(g[3])+(TTS&&g[3]?' <button class="kw" onclick="say(this.dataset.t)" data-t="'+esc(g[3])+'">🔊</button>':"")+'</div></details>'}
+function gAdd(){var a=$("g1").value.trim(),b=$("g2").value.trim(),c=$("g3").value.trim(),d=$("g4").value.trim();if(!a||!b){$("ge").textContent="Nhập tên và công thức để lưu.";return}S.gram.push([a,b,c||"—",d]);save();R()}
+function vGram(){return'<h2>Ngữ pháp</h2><p class="small">12 thì trong tiếng Anh</p>'+G.map(function(g){return gItem(g)}).join("")+'<h2 style="margin-top:18px">Ngữ pháp của tôi</h2>'+S.gram.map(function(g,i){return gItem(g,i)}).join("")+'<div class="glass pad"><b>Thêm ngữ pháp</b><input id="g1" placeholder="Tên (ví dụ: Câu điều kiện loại 1)"><input id="g2" placeholder="Công thức"><input id="g3" placeholder="Cách dùng"><input id="g4" placeholder="Ví dụ"><div class="err" id="ge"></div><div class="row" style="margin-top:0"><button class="btn pri" onclick="gAdd()">Lưu ngữ pháp</button></div></div>'}
+/* Dictionary */
+function wCard(x){var i=S.words.indexOf(x);return'<div class="glass pad"><button class="del" onclick="S.words.splice('+i+',1);delete S.known[\''+x.w.replace(/[^a-z0-9 -]/gi,"")+'\'];save();fb();R()">Xóa</button>'+head(x)+'<div style="margin-top:6px">'+list(x.m)+'</div>'+(x.e?'<div class="small">“'+esc(x.e)+'”</div>':"")+(TTS?'<div class="row"><button class="btn" onclick="say(S.words['+i+'].w)">🔊 Nghe</button></div>':"")+'</div>'}
+function dRes(){var q=$("ds").value.trim().toLowerCase(),r=S.words.filter(function(x){return!q||x.w.toLowerCase().indexOf(q)>-1||x.m.join(" ").toLowerCase().indexOf(q)>-1});$("dres").innerHTML=r.length?r.map(wCard).join(""):'<div class="glass pad c">Chưa có từ này. Hãy thêm từ mới ở bên dưới.</div>'}
+function dAdd(){var w=$("d1").value.trim(),m=$("d4").value.split(";").map(function(x){return x.trim()}).filter(Boolean).slice(0,3);
+  if(!w||!m.length){$("de").textContent="Nhập từ và ít nhất một nghĩa.";return}
+  if(S.words.some(function(x){return x.w.toLowerCase()===w.toLowerCase()})){$("de").textContent="Từ này đã có trong từ điển.";return}
+  S.words.push({w:w,i:$("d2").value.trim(),p:$("d3").value.trim(),m:m,e:$("d5").value.trim()});save();fb();R()}
+function vDict(){return'<h2>Từ điển</h2><input id="ds" placeholder="Tra từ (tiếng Anh hoặc tiếng Việt)" oninput="dRes()"><div id="dres" style="margin-top:12px"></div><div class="glass pad"><b>Thêm từ mới</b><input id="d1" placeholder="Từ (ví dụ: umbrella)"><input id="d2" placeholder="Phiên âm (ví dụ: ʌmˈbrelə)"><input id="d3" placeholder="Loại từ (danh từ, động từ…)"><input id="d4" placeholder="Nghĩa, tối đa 3, cách nhau bằng dấu ;"><input id="d5" placeholder="Câu ví dụ (không bắt buộc)"><div class="err" id="de"></div><div class="row" style="margin-top:0"><button class="btn pri" onclick="dAdd()">Lưu từ</button></div></div>'}
+/* Settings */
+var GB=["linear-gradient(135deg,#ffd1e8,#d9c8ff 45%,#bfe6ff)","linear-gradient(160deg,#ffe3c8,#ffc0d9 55%,#c8b6ff)","linear-gradient(135deg,#c7f0e4,#bfe0ff 50%,#e0d1ff)","linear-gradient(150deg,#1b1840,#4a2d7a 55%,#d86aa8)","linear-gradient(135deg,#fff3b8,#ffd1d1 50%,#cfe8ff)"],AV=["🌸","🐱","🦊","🐰","⭐","🍡"];
+function applyBg(){var b=S.bg,s=document.body.style;s.backgroundImage=!b?"":b.charAt(0)==="g"?GB[+b.slice(1)]:'url("'+b+'")'}
+function setBg(v){S.bg=v;save();applyBg();R()}
+function setAv(v){S.avatar=v;save();R()}
+function img(file,max,cb){var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var k=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext("2d").drawImage(i,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.75))};i.src=r.result};r.readAsDataURL(file)}
+function upBg(el){if(el.files[0])img(el.files[0],1280,setBg)}
+function upAv(el){if(el.files[0])img(el.files[0],160,setAv)}
+function vSet(){return'<h2>Tùy chỉnh</h2><div class="glass pad"><b>Tên hiển thị</b><input value="'+esc(S.name)+'" maxlength="20" oninput="S.name=this.value||\'Bạn\';save();document.querySelector(\'.nm\').textContent=S.name"></div><div class="glass pad"><b>Avatar</b><div class="row">'+AV.map(function(a){return'<button class="sw" onclick="setAv(\''+a+'\')" aria-label="Chọn '+a+'">'+a+'</button>'}).join("")+'</div><p class="small">Hoặc chọn ảnh của bạn:</p><input type="file" accept="image/*" onchange="upAv(this)"></div><div class="glass pad"><b>Hình nền</b><div class="row"><button class="btn" onclick="setBg(\'\')">Tự động</button>'+GB.map(function(g,i){return'<button class="sw" style="background:'+g+'" onclick="setBg(\'g'+i+'\')" aria-label="Nền '+(i+1)+'"></button>'}).join("")+'</div><p class="small">Hoặc chọn ảnh của bạn:</p><input type="file" accept="image/*" onchange="upBg(this)"></div>'}
+applyBg();fb();R();
+</script>
+</body>
+</html>
